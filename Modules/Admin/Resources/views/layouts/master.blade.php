@@ -146,6 +146,9 @@
     <script src="{{ Module::asset('admin:plugins/DatePicker/js/bootstrap-datetimepicker.js') }}"></script>
     <script src="{{ Module::asset('admin:js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
     <!-- Place this tag in your head or just before your close body tag. -->
+    @unless(request()->is('admin/posts/*'))
+        @include('admin::posts.create')
+    @endunless
     @stack('scripts')
     <script src="{{ Module::asset('admin:js/plugins/jquery.sharrre.js') }}"></script>
     <!-- Chartist JS -->
@@ -154,7 +157,7 @@
     <script src="{{ Module::asset('admin:js/material-dashboard.js?v=2.1.0') }}"></script>
     <!--  Notifications Plugin    -->
     <script src="{{ Module::asset('admin:js/plugins/bootstrap-notify.js') }}"></script>
-    <script>
+    <script type="text/javascript">
         $(document).ready(function () {
             @if (session()->has('flash'))   
                 $.notify({
@@ -185,14 +188,12 @@
                 @endforeach
             @endif
         });
-    </script>
-    <script type="text/javascript">
+    
         $(document).ready(function() {
             // Javascript method's body can be found in assets/js/demos.js
             md.initDashboardPageCharts();
         });
     </script>
-    @include('admin::posts.create')
 </body>
 
 </html>

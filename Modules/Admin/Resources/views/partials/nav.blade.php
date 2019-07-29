@@ -12,13 +12,20 @@
             </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item personal" href="{{  route('admin.posts.index') }}">
-                    <i class="fa fa-eye"></i>
-                    <p>Todos los posts</p>
-                </a>
-            <a class="dropdown-item personal" href="#" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-eye"></i>
+                <p>Todos los posts</p>
+            </a>
+            @if (request()->is('admin/posts/*'))
+                <a class="dropdown-item personal" href="{{ route('admin.posts.index', '#create') }}">
                     <i class="material-icons">create</i>
                     <p>Crear un post</p>
                 </a>
+            @else
+            <a class="dropdown-item personal" href="#" data-toggle="modal" data-target="#createModal">
+                <i class="material-icons">create</i>
+                <p>Crear un post</p>
+            </a>
+            @endif
         </div>
     </li>
 </ul>

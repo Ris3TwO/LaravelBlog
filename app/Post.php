@@ -13,6 +13,21 @@ class Post extends Model
         'title', 'body', 'iframe', 'excerpt', 'published_at', 'category_id',
     ];
 
+    protected static function boot()
+    {
+
+        parent::boot();
+
+        static::deleting(function($post){
+            //Borrando categorías y tags asociados
+            $post->categories()->detach();
+            $post->tags()->detach();
+
+            //Borrando fotos asociadas
+            $post->photos->each->delete();
+        });
+    }
+
     public function getRouteKeyName()
     {
         return 'url';

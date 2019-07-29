@@ -23,7 +23,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">Listado de Publicaciones <button class="btn btn-info pull-right" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i> Crear publicación</button></h4>
+                        <h4 class="card-title ">Listado de Publicaciones <button class="btn btn-info pull-right" data-toggle="modal" data-target="#createModal"><i class="fa fa-plus"></i> Crear publicación</button></h4>
                         <p class="card-category">Aquí se muestran tus post </p>
                     </div>
                     <div class="card-body">
@@ -52,7 +52,11 @@
                                         <td>
                                             <a href="{{ route('posts.show', $post) }}" target="_blank" class="btn btn-sm btn-default"><i class="fa fa-eye"></i></a>
                                             <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="btn btn-sm btn-danger"><i class="fa fa-times"></i></a>
+                                            <form action="{{ route('admin.posts.destroy', $post) }}" method="POST" style="display: inline">
+                                                {{ csrf_field() }} {{ method_field('DELETE') }}
+                                                <button class="btn btn-sm btn-danger"
+                                                    onclick="return confirm('¿Estás seguro de querer eliminar esta publicación?')"><i class="fa fa-times"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

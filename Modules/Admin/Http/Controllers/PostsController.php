@@ -55,7 +55,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required',
+            'title' => 'required|min:3',
         ]);
 
         // $post = new Post;
@@ -106,7 +106,8 @@ class PostsController extends Controller
         $post->syncCategories($request->get('categories'));
         $post->syncTags($request->get('tags'));
 
-        return redirect()->route('admin.posts.edit', compact('post'))->with('flash', '¡Tu publicación ha sido guardada exitosamente!');
+        return redirect()->route('admin.posts.edit', compact('post'))
+        ->with('flash', '¡Tu publicación ha sido guardada exitosamente!');
     }
 
     /**
@@ -114,8 +115,11 @@ class PostsController extends Controller
      * @param int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('admin.posts.index')
+        ->with('flash', '¡Tu publicación ha sido eliminada exitosamente!');
     }
 }
