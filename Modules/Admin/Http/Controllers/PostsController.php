@@ -35,18 +35,6 @@ class PostsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    // public function create()
-    // {
-    //     $categories = Category::all();
-    //     $tags = Tag::all();
-
-    //     return view('admin::posts.create', compact('categories', 'tags'));
-    // }
-
-    /**
      * Store a newly created resource in storage.
      * @param Request $request
      * @return Response
@@ -58,10 +46,6 @@ class PostsController extends Controller
             'title' => 'required|min:3',
         ]);
 
-        // $post = new Post;
-        // $post->title = $request->get('title');
-        // $post->url = str_slug($request->get('title'));
-        // $post->save();
         $post = Post::create($request->only('title'));
 
         return redirect()->route('admin.posts.edit', $post);
@@ -88,7 +72,6 @@ class PostsController extends Controller
         $tags = Tag::all();
 
         return view('admin::posts.edit', compact('categories', 'tags', 'post'));
-        // return view('admin::edit');
     }
 
     /**
