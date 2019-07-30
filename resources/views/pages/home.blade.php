@@ -13,7 +13,7 @@
          	    <article class="brick entry {{ $post->photos->count() == 0 ? 'format-video' : ($post->photos->count() < 1 ? 'format-standard' : 'format-gallery group') }} animate-this">
                     @if ($post->photos->count() === 1)
                         <div class="entry-thumb">
-                            <a href="blog/{{ $post->url }}" class="thumb-link">
+                            <a href="/blog/{{ $post->url }}" class="thumb-link">
                                 <img src="{{ $post->photos->first()->url }}" alt="{{ $post->title }}" class="thumb-img">             
                             </a>
                         </div>
@@ -22,7 +22,7 @@
                             <ul class="slides">
                                 @foreach ($post->photos as $photo)
                                 <li>
-                                    <a href="blog/{{ $post->url }}" class="thumb-link">
+                                    <a href="/blog/{{ $post->url }}" class="thumb-link">
                                         <img src="{{ url($photo->url) }}" alt="{{ $post->title }}" class="thumb-img"> 
                                     </a>
                                 </li>    
@@ -50,7 +50,7 @@
 			    					@endforeach             				
                	    		    </span>			
                		        </div>
-                   		    <h1 class="entry-title"><a href="blog/{{ $post->url }}">{{ $post->title }}</a></h1>
+                   		    <h1 class="entry-title"><a href="/blog/{{ $post->url }}">{{ $post->title }}</a></h1>
                         </div>
                        
 		    			<div class="entry-excerpt">

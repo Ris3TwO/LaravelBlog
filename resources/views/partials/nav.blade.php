@@ -5,16 +5,16 @@
                 Inicio
             </a>
         </li>	
-        <li class="{{ setActiveRoute('pages.archive') }}">
-            <a href="{{ route('pages.archive') }}">
-                Archivo
-            </a>
-        </li>	
         <li class="{{ setActiveRoute('pages.about') }}">
             <a href="{{ route('pages.about') }}">
                 Sobre Mí
             </a>
         </li>
+        <li class="{{ setActiveRoute('pages.archive') }}">
+            <a href="{{ route('pages.archive') }}">
+                Archivo
+            </a>
+        </li>	
         <li class="{{ setActiveRoute('pages.contact') }}">
             <a href="{{ route('pages.contact') }}">
                 Contáctame
