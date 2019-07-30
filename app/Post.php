@@ -67,7 +67,7 @@ class Post extends Model
     {
         $url = str_slug($this->title);
 
-        if ($this->where('url', $url)->first())
+        if ($this->whereUrl($url)->exists())
         {
             $url = "{$url}-{$this->id}";
         }
