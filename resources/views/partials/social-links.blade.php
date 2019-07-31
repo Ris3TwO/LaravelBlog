@@ -13,7 +13,7 @@
         </li>
         <li>
             <div class="twitter">
-                <a href="https://twitter.com/intent/tweet?url={{ request()->fullUrl() }}&text={{ $description }}&via={{ config('app.name') }}&hashtags={{ config('app.name') }}" 
+                <a href="https://twitter.com/intent/tweet?url={{ request()->fullUrl() }}&text={{ $description }}&via=@UnaAlejaa&hashtags={{ $post->url }}" 
                     target="_blank" 
                     title="Tweet">
                     <i class="fa fa-twitter" aria-hidden="true"></i>

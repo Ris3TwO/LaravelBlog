@@ -87,13 +87,13 @@
                 </div>
             </div>
         </form>
-        <?php
+        {{--  <?php
 $url = 'http://www.youtube.com/watch?v=aDaOgu2CQtI';
 
 $partes = parse_url($url);
 $url = str_replace("v=", "", $partes);
-$url['query'];
-?>
+echo $url['query'];
+?>  --}}
         @if ($post->photos->count())
             <div class="col-md-12">
                 <div class="card">

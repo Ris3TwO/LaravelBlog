@@ -46,49 +46,21 @@
                         <span class="navbar-toggler-icon icon-bar"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end">
-                        {{--
-                        <formclass="navbar-form">
-                            <divclass="input-groupno-border">
-                                <inputtype="text" value="" class="form-control" placeholder="Search...">
-                                    <buttontype="submit" class="btnbtn-defaultbtn-roundbtn-just-icon">
-                                        <iclass="material-icons">search</i>
-                                            <divclass="ripple-container">
-                    </div>
-                    </button>
-                </div>
-                </form> --}}
+                       
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin">
-                                    <i class="material-icons">dashboard</i>
-                                    <p class="d-lg-none d-md-block">
-                                        Stats
-                                    </p>
-                                </a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" role="button" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">notifications</i>
-                                    <span class="notification">5</span>
-                                    <p class="d-lg-none d-md-block">
-                                        Some Actions
-                                    </p>
-                                </a>
+                            <i class="material-icons">person</i>
+                            <p class="d-lg-none d-md-block">
+                                Account
+                            </p>
+                            {{ auth()->user()->name }}
+                        </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="javascript:void(0)">Mike John responded to your email</a>
-                            <a class="dropdown-item" href="javascript:void(0)">You have 5 new tasks</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" role="button" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="material-icons">person</i>
-                                    <p class="d-lg-none d-md-block">
-                                        Account
-                                    </p>
-                                </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">{{ auth()->user()->name }}</a>
-                            <a class="dropdown-item" href="javascript:void(0)">You have 5 new tasks</a>
+                            <form action="{{ route('logout') }}" method="POST">
+                                {{ csrf_field() }}
+                                <button class="dropdown-item">Cerrar sesión</button>
+                            </form>
                         </div>
                     </li>
                 </ul>

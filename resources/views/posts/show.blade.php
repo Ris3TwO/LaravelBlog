@@ -10,17 +10,7 @@
             <article class="{{ $post->photos->count() == 0 ? 'format-video' : ($post->photos->count() < 1 ? 'format-standard' : 'format-gallery') }}">  
                 <div class="content-media">
                     <div class="{{ $post->photos->count() == 0 ? 'fluid-video-wrapper' : ($post->photos->count() < 1 ? 'post-thumb' : 'post-slider flexslider') }}">
-                        @if ($post->photos->count() === 1)
-                            <img src="{{ url($post->photos->first()->url) }}" alt="{{ $post->title }}">
-                        @elseif ($post->photos->count() > 1)
-                            <ul class="slides">
-                                @foreach($post->photos as $photo)
-                                    <li><img src="{{ url($photo->url) }}" alt="{{ $post->title }}"></li>
-                                @endforeach
-                            </ul>
-                        @elseif ($post->iframe)
-                            <iframe src="{!! $post->iframe !!}" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                        @endif     
+                        @include($post->viewType())    
                     </div>    
                 </div>
 
@@ -28,22 +18,19 @@
                     <h1 class="page-title">{{ $post->title }}</h1>	
  
                     <ul class="entry-meta">
-                        <li class="date">{{ $post->published_at->format('M d') }}</li>						
-                        <li class="cat">
-                            @foreach ($post->categories as $category)
-                                <a href="">{{ $category->name }}</a>
-                            @endforeach
-                        </li>				
+                        @include('posts.header')
                     </ul>						
  
                     <p class="lead">{!! $post->body !!}</p>
- 
-                    <p class="tags">
-                        <span>Etiquetado en:</span>
-                        @foreach ($post->tags as $tag)
-                            <a href="#">#{{ $tag->name }}</a>
-                        @endforeach
-                    </p> 
+                    
+                    @if ($post->tags)
+                        <p class="tags">
+                            <span>Etiquetado en:</span>
+                            @foreach ($post->tags as $tag)
+                                <a href="{{ route('tags.show', $tag) }}">#{{ $tag->name }}</a>
+                            @endforeach
+                        </p> 
+                    @endif
                     
                     @include('partials.social-links', ['description' => $post->title, 'excerpt' => $post->excerpt])
 
@@ -51,9 +38,14 @@
                         <img src="images/avatars/user-05.jpg" alt="">
  
                         <div class="about">
-                            <h4><a href="#">Jonathan Smith</a></h4>
+                            <h4>
+                                <a href="#">
+                                    {{ $post->owner->name }}
+                                </a>
+                            </h4>
                               
-                            <p>Alias aperiam at debitis deserunt dignissimos dolorem doloribus, fuga fugiat impedit laudantium magni maxime nihil nisi quidem quisquam sed ullam voluptas voluptatum. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            <p>
+                                {{ $post->owner->biography }}
                             </p>
  
                             <ul class="author-social">
@@ -66,7 +58,7 @@
                     </div> <!-- end author-profile -->						
  
                 </div> <!-- end entry-primary -->		  			   
- 
+                {{--  {{ $post->links() }}
                 <div class="pagenav group">
                     <div class="prev-nav">
                         <a href="#" rel="prev">
@@ -80,7 +72,7 @@
                             Less Is More 
                         </a>
                     </div>  				   
-                </div>
+                </div>  --}}
  
             </article>
             
@@ -89,6 +81,13 @@
     </div> <!-- end row -->
  
     <div class="comments-wrap">
+        <section id="page-header">
+            <div class="row current-cat">
+                <div class="col-full">
+                    <h1>Comentarios</h1>
+                </div>   		
+            </div>
+        </section>
         <div id="comments" class="row">
             <div class="col-full">                
                 <div id="disqus_thread"></div>

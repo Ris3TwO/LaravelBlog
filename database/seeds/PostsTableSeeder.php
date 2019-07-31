@@ -27,6 +27,7 @@ class PostsTableSeeder extends Seeder
         $post->excerpt = "Esto es un extracto de mi primer post realizado en laravel para mantener pruebas durante el curso de creación de una APP desde 0.";
         $post->body = "<p>Contenido de mi primer post</p>";
         $post->published_at = Carbon::now()->subDays(4);
+        $post->user_id = 1;
         $post->save();
 
         $post->tags()->attach(Tag::create(['name' => 'Etiqueta 1']));
@@ -38,6 +39,7 @@ class PostsTableSeeder extends Seeder
         $post->excerpt = "Esto es un extracto de mi segundo post realizado en laravel para mantener pruebas durante el curso de creación de una APP desde 0.";
         $post->body = "<p>Contenido de mi segundo post</p>";
         $post->published_at = Carbon::now()->subDays(3);
+        $post->user_id = 1;
         $post->save();
 
         $post->tags()->attach(Tag::create(['name' => 'Etiqueta 2']));
@@ -49,6 +51,7 @@ class PostsTableSeeder extends Seeder
         $post->excerpt = "Esto es un extracto de mi tercer post realizado en laravel para mantener pruebas durante el curso de creación de una APP desde 0.";
         $post->body = "<p>Contenido de mi tercero post</p>";
         $post->published_at = Carbon::now()->subDays(2);
+        $post->user_id = 2;
         $post->save();
 
         $post->tags()->attach(Tag::create(['name' => 'Etiqueta 3']));
@@ -60,6 +63,7 @@ class PostsTableSeeder extends Seeder
         $post->excerpt = "Esto es un extracto de mi cuarto post realizado en laravel para mantener pruebas durante el curso de creación de una APP desde 0.";
         $post->body = "<p>Contenido de mi cuarto post</p>";
         $post->published_at = Carbon::now()->subDays(1);
+        $post->user_id = 2;
         $post->save();
 
         $post->tags()->attach(Tag::create(['name' => 'Etiqueta 4']));

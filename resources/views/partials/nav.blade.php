@@ -4,6 +4,23 @@
             <a href="{{ route('pages.home') }}">
                 Inicio
             </a>
+        </li>
+        <li class="has-children {{ setActiveRoute('categories.show') }}">
+            <a href="#">
+                Categorías
+            </a>
+            <ul class="sub-menu">
+                @foreach(App\Category::get() as $category)
+                    <li>
+                        <a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a>  
+                    </li>
+                @endforeach
+            </ul>
+        </li>
+        <li class="{{ setActiveRoute('posts.show') }}">
+            <a href="#">
+                Blog
+            </a>
         </li>	
         <li class="{{ setActiveRoute('pages.about') }}">
             <a href="{{ route('pages.about') }}">

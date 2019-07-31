@@ -1,0 +1,1 @@
+<img src="{{ url($post->photos->first()->url) }}" alt="{{ $post->title }}">

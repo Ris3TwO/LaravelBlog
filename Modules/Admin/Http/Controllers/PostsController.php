@@ -5,10 +5,9 @@ namespace Modules\Admin\Http\Controllers;
 use App\Tag;
 use App\Post;
 use App\Category;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Routing\Controller;
+use App\Http\Controllers\Controller;
 use Modules\Admin\Http\Requests\StorePostRequest;
 
 class PostsController extends Controller
@@ -29,7 +28,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = auth()->user()->posts;
 
         return view('admin::posts.index', compact('posts'));
     }
@@ -42,11 +41,14 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
+
+        $this->authorize('create', new Post);
+
         $validatedData = $request->validate([
             'title' => 'required|min:3',
         ]);
 
-        $post = Post::create($request->only('title'));
+        $post = Post::create($request->all());
 
         return redirect()->route('admin.posts.edit', $post);
     }
@@ -68,10 +70,13 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        $categories = Category::all();
-        $tags = Tag::all();
+        $this->authorize('view', $post);
 
-        return view('admin::posts.edit', compact('categories', 'tags', 'post'));
+        return view('admin::posts.edit', [
+            'post' => $post,
+            'tags' => Tag::all(),
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -82,6 +87,8 @@ class PostsController extends Controller
      */
     public function update(Post $post, StorePostRequest $request)
     {
+        //Función para autorizar la actualización
+        $this->authorize('update', $post);
         //Función para actualizar
         $post->update($request->all());
         
@@ -100,9 +107,13 @@ class PostsController extends Controller
      */
     public function destroy(Post $post)
     {
+        //Función para autorizar la eliminación
+        $this->authorize('delete', $post);
+
         $post->delete();
 
         return redirect()->route('admin.posts.index')
         ->with('flash', '¡Tu publicación ha sido eliminada exitosamente!');
     }
 }
+ 
