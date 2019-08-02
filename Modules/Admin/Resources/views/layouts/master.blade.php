@@ -49,17 +49,22 @@
                        
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" role="button" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link" href="#pablo" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="material-icons">person</i>
                             <p class="d-lg-none d-md-block">
                                 Account
                             </p>
-                            {{ auth()->user()->name }}
+                            <div class="ripple-container"></div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                            <div class="dropdown-item">{{ auth()->user()->name }} - {{ auth()->user()->roles->first()->name }}</div>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Perfil</a>
+                            <a class="dropdown-item" href="#">Configuraciones</a>
+                            <div class="dropdown-divider"></div>
                             <form action="{{ route('logout') }}" method="POST">
                                 {{ csrf_field() }}
-                                <button class="dropdown-item">Cerrar sesión</button>
+                                <button class="dropdown-item">Salir</button>
                             </form>
                         </div>
                     </li>

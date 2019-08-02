@@ -21,6 +21,19 @@ class PostPolicy
     }
 
     /**
+     * Create a permission for users.
+     *
+     * @return void
+     */
+    public function before($user)
+    {
+        if ( $user->hasRole('Admin') )
+        {
+            return true;
+        }
+    }
+
+    /**
      * Determine whether the user can view the post.
      *
      * @param  \App\User  $user
