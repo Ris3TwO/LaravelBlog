@@ -63,10 +63,8 @@ RUN chmod -R 777 /var/www/storage
 RUN composer install
 RUN npm install
 
-RUN docker-compose up
-
 RUN php artisan storage:link
-RUN php artisan migrate:fresh --seed
+#RUN php artisan migrate:fresh --seed
 
 RUN php artisan cache:clear
 
