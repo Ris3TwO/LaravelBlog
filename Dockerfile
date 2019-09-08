@@ -4,7 +4,6 @@ FROM php:7.2-fpm
 COPY ./laravel-app/composer.lock ./laravel-app/composer.json /var/www/
 COPY docker-entry.sh /
 RUN chmod +x /docker-entry.sh
-RUN a2enmod rewrite
 
 # Set working directory
 WORKDIR /var/www
