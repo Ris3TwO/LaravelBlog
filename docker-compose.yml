@@ -49,10 +49,10 @@ services:
     # expose:
     #   - 3306
     environment:
-      - MYSQL_DATABASE=root
+      - MYSQL_DATABASE=blog
       - MYSQL_ROOT_PASSWORD=Pro@123
-      - MYSQL_USER=demo
-      - MYSQL_PASSWORD=demo
+      - MYSQL_USER=blog
+      - MYSQL_PASSWORD=M24j631r089B.
     ports:
       - 3306:3306
     volumes:
