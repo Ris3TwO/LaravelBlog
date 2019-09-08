@@ -56,9 +56,11 @@ RUN rm -rf /etc/nginx/sites-enabled
 RUN mkdir -p /etc/nginx/sites-enabled
 
 RUN chmod -R 777 /var/www/storage
-RUN composer install
 RUN php artisan cache:clear
 
+RUN composer install
+RUN npm install
+RUN php artisan storage:link
 
 # Expose port 80 and start php-fpm server
 EXPOSE 80
