@@ -40,7 +40,7 @@
                         <div class="about">
                             <h4>
                                 <a href="#">
-                                    {{ $post->owner->name }}
+                                    {{ $post->owner->name }} {{ $post->owner->lastname }}
                                 </a>
                             </h4>
                               

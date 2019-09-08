@@ -6,5 +6,5 @@
      */
     function setActiveRoute($name)
     {
-        return request()->routeIs($name) ? 'current' : '';
+        return request()->routeIs($name) ? 'active' : '';
     }

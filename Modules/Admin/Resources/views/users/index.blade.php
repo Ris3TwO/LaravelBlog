@@ -1,7 +1,7 @@
 @extends('admin::layouts.master')
 @section('header')
 <div class="navbar-wrapper">
-    <p class="navbar-brand">POST</p>
+    <p class="navbar-brand">USUARIOS</p>
 </div>
 @stop
 
@@ -10,7 +10,7 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin') }}"><i class="material-icons">dashboard</i> Inicio</a>
         </li>
-        <li class="breadcrumb-item active" aria-current="page"> Posts</li>
+        <li class="breadcrumb-item active" aria-current="page"> Usuarios</li>
     </ol>
 </nav>
 <div class="content">
@@ -19,44 +19,38 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">Listado de Publicaciones <button class="btn btn-info pull-right"
+                        <h4 class="card-title ">Listado de usuarios <button class="btn btn-info pull-right"
                                 data-toggle="modal" data-target="#createModal"><i class="fa fa-plus"></i> Crear
-                                publicación</button></h4>
-                        <p class="card-category">Aquí se muestran tus post </p>
+                                usuario</button></h4>
+                        <p class="card-category">Aquí se muestran los usuarios </p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="posts-table" class="table">
+                            <table id="users-table" class="table">
                                 <thead class=" text-primary">
-                                    <th>
-                                        ID
-                                    </th>
-                                    <th>
-                                        Titulo
-                                    </th>
-                                    <th>
-                                        Extracto
-                                    </th>
-                                    <th>
-                                        Acciones
-                                    </th>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Roles</th>
+                                    <th>Acciones</th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($posts as $post)
+                                    @foreach ($users as $user)
                                     <tr>
-                                        <td>{{ $post->id }}</td>
-                                        <td>{{ $post->title }}</td>
-                                        <td>{{ $post->excerpt }}</td>
+                                        <td>{{ $user->id }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->getRoleNames()->implode(', ') }}</td>
                                         <td>
-                                            <a href="{{ route('posts.show', $post) }}" target="_blank"
+                                            <a href="{{ route('admin.users.show', $user) }}"
                                                 class="btn btn-sm btn-default"><i class="fa fa-eye"></i></a>
-                                            <a href="{{ route('admin.posts.edit', $post) }}"
+                                            <a href="{{ route('admin.users.edit', $user) }}"
                                                 class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
-                                            <form action="{{ route('admin.posts.destroy', $post) }}" method="POST"
+                                            <form action="{{ route('admin.users.destroy', $user) }}" method="user"
                                                 style="display: inline">
                                                 {{ csrf_field() }} {{ method_field('DELETE') }}
                                                 <button class="btn btn-sm btn-danger"
-                                                    onclick="return confirm('¿Estás seguro de querer eliminar esta publicación?')"><i
+                                                    onclick="return confirm('¿Estás seguro de querer eliminar esta usuario?')"><i
                                                         class="fa fa-times"></i></button>
                                             </form>
                                         </td>
@@ -86,7 +80,7 @@
     <script src="{{ Module::asset('admin:plugins/DataTables/js/dataTables.bootstrap4.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#posts-table').DataTable({
+            $('#users-table').DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": false,
