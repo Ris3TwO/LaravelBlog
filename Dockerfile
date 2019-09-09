@@ -65,6 +65,8 @@ RUN npm install
 
 RUN php artisan storage:link
 #RUN php artisan migrate:fresh --seed
+RUN docker-compose build
+RUN docker-compose up -d
 
 RUN php artisan cache:clear
 
