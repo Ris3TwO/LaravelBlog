@@ -14,16 +14,16 @@
 
  	<!-- CSS
     ================================================== -->
-    <link href="{{ secure_asset('css/base.css') }}" rel="stylesheet">
-    <link href="{{ secure_asset('css/vendor.css') }}" rel="stylesheet">
-    <link href="{{ secure_asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/base.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/vendor.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     @stack('styles')
 
     <!-- script
     ================================================== -->
-    <script src="{{ secure_asset('js/app.js') }}" defer></script>
-    <script src="{{ secure_asset('js/modernizr.js') }}"></script>
-    <script src="{{ secure_asset('js/pace.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/modernizr.js') }}"></script>
+    <script src="{{ asset('js/pace.min.js') }}"></script>
     @stack('scripts')
 
     <!-- favicons
@@ -162,8 +162,8 @@
 
         <!-- Java Script
         ================================================== -->
-        <script src="{{ secure_asset('js/jquery-2.1.3.min.js') }}"></script>
-        <script src="{{ secure_asset('js/plugins.js') }}"></script>
-        <script src="{{ secure_asset('js/main.js') }}"></script>
+        <script src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
+        <script src="{{ asset('js/plugins.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>
