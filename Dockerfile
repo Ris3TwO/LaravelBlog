@@ -60,8 +60,9 @@ RUN mkdir -p /etc/nginx/sites-enabled
 
 RUN chmod -R 777 /var/www/storage
 
+# Install dependencies
 RUN composer install
-RUN npm install
+RUN npm install && npm cache clean --force
 
 RUN php artisan storage:link
 #RUN php artisan migrate:fresh --seed
