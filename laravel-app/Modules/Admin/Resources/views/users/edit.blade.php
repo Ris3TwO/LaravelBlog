@@ -94,39 +94,43 @@
                 <div class="card card-nav-tabs">
                     <h4 class="card-header card-header-info">Roles</h4>
                     <div class="card-body">
-                        <form action="{{ route('admin.users.roles.update', $user) }}" method="post">
-                            {{ csrf_field() }} {{ method_field('PUT') }}
-                            @foreach ($roles as $role)
-                            <div class="checkbox">
-                                <label for="">
-                                    <input type="checkbox" name="roles[]" value="{{ $role->name }}"
-                                        {{ $user->roles->contains($role->id) ? 'checked' : '' }}>
-                                    {{ $role->name }}<br>
-                                    <small class="text-muted">{{ $role->permissions->pluck('name')->implode(', ') }}</small>
-                                </label>
-                            </div>
-                            @endforeach
-                            <button class="btn btn-info btn-block">Actualizar roles</button>
-                        </form>
+                        @role('Admin')
+                            <form action="{{ route('admin.users.roles.update', $user) }}" method="post">
+                                {{ csrf_field() }} {{ method_field('PUT') }}
+                                @include('admin::roles.checkboxes')
+
+                                <button class="btn btn-info btn-block">Actualizar roles</button>
+                            </form>
+                        @else
+                            <ul class="list-group">
+                                @forelse ($user->roles as $role)
+                                    <li class="list-group-item">{{ $role->name }}</li>
+                                @empty
+                                    <li class="list-group-item">No tiene roles</li>
+                                @endforelse
+                            </ul>
+                        @endrole
                     </div>
                 </div>
                 <br>
                 <div class="card card-nav-tabs">
                     <h4 class="card-header card-header-info">Permisos</h4>
                     <div class="card-body">
-                        <form action="{{ route('admin.users.permissions.update', $user) }}" method="post">
-                            {{ csrf_field() }} {{ method_field('PUT') }}
-                            @foreach ($permissions as $id => $name)
-                            <div class="checkbox">
-                                <label for="">
-                                    <input type="checkbox" name="permissions[]" value="{{ $name }}"
-                                        {{ $user->permissions->contains($id) ? 'checked' : '' }}>
-                                    {{ $name }}
-                                </label>
-                            </div>
-                            @endforeach
-                            <button class="btn btn-info btn-block">Actualizar permisos</button>
-                        </form>
+                        @role('Admin')
+                            <form action="{{ route('admin.users.permissions.update', $user) }}" method="post">
+                                {{ csrf_field() }} {{ method_field('PUT') }}
+                                @include('admin::permissions.checkboxes', ['model' => $user])
+                                <button class="btn btn-info btn-block">Actualizar permisos</button>
+                            </form>
+                        @else
+                            <ul class="list-group">
+                                @forelse ($user->permissions as $permission)
+                                    <li class="list-group-item">{{ $permission->name }}</li>
+                                @empty
+                                    <li class="list-group-item">No tiene permisos</li>
+                                @endforelse
+                            </ul>
+                        @endrole
                     </div>
                 </div>
             </div>

@@ -59,7 +59,7 @@
                                     <div class="ripple-container"></div>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
-                                    <div class="dropdown-item">{{ auth()->user()->name }} {{ auth()->user()->lastname }}</div>
+                                    <div class="dropdown-item">{{ auth()->user()->name }} {{ auth()->user()->lastname }} - {{ auth()->user()->getRoleDisplayNames() }}</div>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('admin.users.show', auth()->user()) }}">Perfil</a>
                                     <a class="dropdown-item" href="#">Configuraciones</a>

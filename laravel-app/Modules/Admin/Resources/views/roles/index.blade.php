@@ -1,7 +1,7 @@
 @extends('admin::layouts.master')
 @section('header')
 <div class="navbar-wrapper">
-    <p class="navbar-brand">USUARIOS</p>
+    <p class="navbar-brand">ROLES</p>
 </div>
 @stop
 
@@ -10,7 +10,7 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin') }}"><i class="material-icons">dashboard</i> Inicio</a>
         </li>
-        <li class="breadcrumb-item active" aria-current="page"> Usuarios</li>
+        <li class="breadcrumb-item active" aria-current="page"> Roles</li>
     </ol>
 </nav>
 <div class="content">
@@ -19,37 +19,37 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">Listado de usuarios 
-                            <a href="{{ route('admin.users.create') }}" class="btn btn-info pull-right">
+                        <h4 class="card-title ">Listado de Roles 
+                            <a href="{{ route('admin.roles.create') }}" class="btn btn-info pull-right">
                                 <i class="fa fa-plus"></i> 
-                                Crear usuario
+                                Crear role
                             </a>
                         </h4>
-                        <p class="card-category">Aquí se muestran los usuarios </p>
+                        <p class="card-category">Aquí se muestran los roles.</p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="users-table" class="table">
+                            <table id="roles-table" class="table">
                                 <thead class=" text-primary">
                                     <th>ID</th>
+                                    <th>Identificador</th>
                                     <th>Nombre</th>
-                                    <th>Email</th>
-                                    <th>Roles</th>
+                                    <th>Permisos</th>
                                     <th>Acciones</th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($roles as $role)
                                     <tr>
-                                        <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>{{ $user->getRoleNames()->implode(', ') }}</td>
+                                        <td>{{ $role->id }}</td>
+                                        <td>{{ $role->name }}</td>
+                                        <td>{{ $role->display_name }}</td>
+                                        <td>{{ $role->permissions->pluck('display_name')->implode(', ') }}</td>
                                         <td>
-                                            <a href="{{ route('admin.users.show', $user) }}"
+                                            <a href="{{ route('admin.roles.show', $role) }}"
                                                 class="btn btn-sm btn-default"><i class="fa fa-eye"></i></a>
-                                            <a href="{{ route('admin.users.edit', $user) }}"
+                                            <a href="{{ route('admin.roles.edit', $role) }}"
                                                 class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
-                                            <form action="{{ route('admin.users.destroy', $user) }}" method="POST"
+                                            <form action="{{ route('admin.roles.destroy', $role) }}" method="POST"
                                                 style="display: inline">
                                                 {{ csrf_field() }} {{ method_field('DELETE') }}
                                                 <button class="btn btn-sm btn-danger"
@@ -83,7 +83,7 @@
     <script src="{{ Module::asset('admin:plugins/DataTables/js/dataTables.bootstrap4.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#users-table').DataTable({
+            $('#roles-table').DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": false,

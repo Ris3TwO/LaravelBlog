@@ -11,6 +11,11 @@
 |
 */
 
+// Route::get('email', function() {
+//     return new App\Mail\LoginCredentials(App\User::first(), '41312312312');
+// });
+
+
 Route::get('/', 'PagesController@home')->name('pages.home');
 Route::get('sobre-mi', 'PagesController@about')->name('pages.about');
 Route::get('archivo', 'PagesController@archive')->name('pages.archive');
