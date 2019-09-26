@@ -19,9 +19,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title ">Listado de usuarios 
+                        <h4 class="card-title ">Listado de usuarios
                             <a href="{{ route('admin.users.create') }}" class="btn btn-info pull-right">
-                                <i class="fa fa-plus"></i> 
+                                <i class="fa fa-plus"></i>
                                 Crear usuario
                             </a>
                         </h4>
@@ -41,7 +41,7 @@
                                     @foreach ($users as $user)
                                     <tr>
                                         <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->name }} {{ $user->lastname }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->getRoleNames()->implode(', ') }}</td>
                                         <td>
@@ -76,7 +76,7 @@
 
 @stop @push('styles')
 <link href="{{ Module::asset('admin:plugins/DataTables/css/dataTables.bootstrap4.css') }}" rel="stylesheet">
-@endpush 
+@endpush
 @push('scripts')
 <! -- DataTables JS plugin -->
     <script src="{{ Module::asset('admin:plugins/DataTables/js/jquery.dataTables.js') }}"></script>

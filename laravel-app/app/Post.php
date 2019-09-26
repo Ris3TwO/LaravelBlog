@@ -3,11 +3,14 @@
 namespace App;
 
 use Carbon\Carbon;
+use App\Traits\DatesTranslator;
 use Modules\Admin\Entities\Photo;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    use DatesTranslator;
+
     protected $dates = ['published_at'];
     protected $fillable = [
         'title', 'body', 'iframe', 'excerpt', 'published_at', 'category_id', 'user_id'
@@ -47,6 +50,11 @@ class Post extends Model
         return $this->hasMany(Photo::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comments::class)->whereNull('parent_id');
+    }
+
     public function owner()
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -65,7 +73,7 @@ class Post extends Model
         {
             return $query;
         }
-        
+
         return $query->where('user_id', auth()->id());
     }
 
@@ -77,11 +85,11 @@ class Post extends Model
     public static function create(array $attributes = [])
     {
         $attributes['user_id'] = auth()->id();
-        
+
         $post = static::query()->create($attributes);
 
         $post->generateUrl();
-        
+
         return $post;
     }
 
@@ -141,4 +149,3 @@ class Post extends Model
     }
 
 }
- 

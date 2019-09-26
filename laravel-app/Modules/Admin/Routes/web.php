@@ -11,19 +11,27 @@
 |
 */
 
+Route::group(['domain' => 'cp.'. Config::get('app.url')], function () {
+
+    Route::get('/', function () {
+        return redirect(Config::get('app.url'));
+    });
+});
+
 Route::group([
+    'domain' => 'cp.'. Config::get('app.url'),
     'prefix' => 'admin',
     'middleware' => 'auth'],
-    
-    function() { 
+
+    function() {
         Route::get('/', 'AdminController@index')->name('admin');
 
         Route::resource('posts', 'PostsController', ['except' => 'show', 'as' => 'admin']);
         Route::resource('users', 'UsersController', ['as' => 'admin']);
-        Route::resource('roles', 'RolesController', ['as' => 'admin']);
+        Route::resource('roles', 'RolesController', ['except' => 'show', 'as' => 'admin']);
 
         Route::put('users/{user}/password', 'UsersPasswordController@update')->name('admin.users.password.update');
-        
+
         Route::middleware('role:Admin')
         ->put('users/{user}/roles', 'UsersRolesController@update')
         ->name('admin.users.roles.update');

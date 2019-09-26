@@ -46,7 +46,6 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-
         if($post->isPublished() || auth()->check())
         {
             // $post = Post::published()->simplePaginate();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -25,7 +26,15 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    // protected $redirectTo = 'http://cp.laravelblog.test';
+    protected function redirectTo()
+    {
+        return route('admin');
+    }
+
+    protected function loggedOut(Request $request) {
+        return redirect()->route('pages.home');
+    }
 
     /**
      * Create a new controller instance.
