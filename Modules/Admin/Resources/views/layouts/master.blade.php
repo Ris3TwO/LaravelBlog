@@ -26,7 +26,7 @@
         <div class="sidebar" data-color="purple" data-background-color="black"
             data-image="{{ Module::asset('admin:img/sidebar-1.jpg') }}">
             <div class="logo">
-                <a href="{{ url('/') }}" class="simple-text logo-normal">
+                <a href="{{ route('admin') }}" class="simple-text logo-normal">
                     {{ config('app.name', 'Laravel') }}
                 </a>
             </div>
@@ -138,7 +138,7 @@
         <script src="{{ Module::asset('admin:js/plugins/bootstrap-notify.js') }}"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-            @if (session()->has('flash'))   
+            @if (session()->has('flash'))
                 $.notify({
                     icon: "check",
                     message: "{{ session('flash') }}"
@@ -151,7 +151,7 @@
                     }
                 });
             @endif
-            @if ($errors->any())   
+            @if ($errors->any())
                 @foreach ($errors->all() as $error)
                     $.notify({
                         icon: "error",
@@ -167,7 +167,7 @@
                 @endforeach
             @endif
         });
-    
+
         $(document).ready(function() {
             // Javascript method's body can be found in assets/js/demos.js
             md.initDashboardPageCharts();

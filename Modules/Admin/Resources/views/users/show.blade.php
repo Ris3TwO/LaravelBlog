@@ -17,7 +17,7 @@
 </nav>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="card card-profile">
                 <div class="card-avatar">
                     <a href="#pablo">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="card-body">
                     <h6 class="card-category text-gray">{{ $user->getRoleNames()->implode('/ ') }}</h6>
-                    <h4 class="card-title">{{ $user->name }}</h4>
+                    <h4 class="card-title">{{ $user->name }} {{ $user->lastname }}</h4>
                     <p class="card-description">
                         {{ $user->biography }}
                     </p>
@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card card-nav-tabs">
                 <h4 class="card-header card-header-info">Roles</h4>
                 <div class="card-body">
