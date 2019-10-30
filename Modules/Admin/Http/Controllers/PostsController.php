@@ -91,7 +91,7 @@ class PostsController extends Controller
         $this->authorize('update', $post);
         //Función para actualizar
         $post->update($request->all());
-        
+
         //Sincronización para categorías y tags
         $post->syncCategories($request->get('categories'));
         $post->syncTags($request->get('tags'));
@@ -116,4 +116,3 @@ class PostsController extends Controller
         ->with('flash', '¡Tu publicación ha sido eliminada exitosamente!');
     }
 }
- 
