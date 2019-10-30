@@ -5,6 +5,11 @@
                 Inicio
             </a>
         </li>
+        <li class="{{ setActiveRouteHome('posts.show') }}{{ setActiveRouteHome('blog.home') }}">
+            <a href="{{ route('blog.home') }}">
+                Blog
+            </a>
+        </li>
         <li class="has-children {{ setActiveRouteHome('categories.show') }}">
             <a href="#">
                 Categorías
@@ -17,19 +22,14 @@
                 @endforeach
             </ul>
         </li>
-        <li class="{{ setActiveRouteHome('posts.show') }}{{ setActiveRouteHome('blog.home') }}">
-            <a href="{{ route('blog.home') }}">
-                Blog
+        <li class="{{ setActiveRouteHome('pages.archive') }}">
+            <a href="{{ route('pages.archive') }}">
+                Archivo
             </a>
         </li>
         <li class="{{ setActiveRouteHome('pages.about') }}">
             <a href="{{ route('pages.about') }}">
-                Sobre Mí
-            </a>
-        </li>
-        <li class="{{ setActiveRouteHome('pages.archive') }}">
-            <a href="{{ route('pages.archive') }}">
-                Archivo
+                Nosotros
             </a>
         </li>
         <li class="{{ setActiveRouteHome('pages.contact') }}">

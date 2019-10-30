@@ -26,7 +26,7 @@
         <div class="sidebar" data-color="purple" data-background-color="black"
             data-image="{{ Module::asset('admin:img/sidebar-1.jpg') }}">
             <div class="logo">
-                <a href="{{ route('admin') }}" class="simple-text logo-normal">
+                <a href="{{ route('pages.home') }}" class="simple-text logo-normal">
                     {{ config('app.name', 'Laravel') }}
                 </a>
             </div>
