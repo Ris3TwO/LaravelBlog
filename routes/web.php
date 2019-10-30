@@ -25,7 +25,7 @@ Route::group(['domain' => Config::get('app.url')], function () {
     Route::get('nosotros', 'PagesController@about')->name('pages.about');
     Route::get('archivo', 'PagesController@archive')->name('pages.archive');
     Route::get('contactame', 'PagesController@contact')->name('pages.contact');
-    Route::get('/blog', 'PagesController@home')->name('blog.home');
+    Route::get('/blog', 'PagesController@blog')->name('blog.home');
 
     Route::get('blog/{post}', 'PostsController@show')->name('posts.show');
     Route::post('blog/{post}/comment', 'CommentsController@store')->name('comments.store');

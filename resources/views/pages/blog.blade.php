@@ -59,7 +59,7 @@
     </div> <!-- end row -->
 
     <div class="row">
-        {{ $posts->links() }}
+        {{ $posts->appends(request()->all())->links() }}
     </div>
 </section> <!-- end bricks -->
 @endsection

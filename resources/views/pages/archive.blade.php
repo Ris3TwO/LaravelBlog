@@ -24,6 +24,17 @@
                     </a>
                 </li>
                 @endforeach
+            </ul>
+            <hr>
+            <h3>Publicaciones por Meses</h3>
+            <ul class="disc">
+                @foreach ($archive as $date)
+                <li class="text-capitalize">
+                    <a href="{{ route('blog.home', ['month' => $date->month, 'year' => $date->year]) }}">
+                        {{ $date->monthname }} {{ $date->year }} ({{ $date->posts }})
+                    </a>
+                </li>
+                @endforeach
 
             </ul>
         </div>
@@ -51,39 +62,6 @@
                     </p>
                 </div>
             @endforeach
-
-            {{-- <p>
-                <a href="#">
-                    <img width="120" height="120" class="pull-left" alt="sample-image" src="images/sample-image.jpg">
-                </a>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.Cras id
-                urna.
-                Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus
-                leo.
-                Donec mattis, purus nec placerat bibendum, dui pede condimentum odio.
-            </p>
-            <p>
-                <a href="#">
-                    <img width="120" height="120" class="pull-left" alt="sample-image" src="images/sample-image.jpg">
-                </a>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.Cras id
-                urna.
-                Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus
-                leo.
-                Donec mattis, purus nec placerat bibendum, dui pede condimentum odio.
-            </p>
-            <p>
-                <a href="#">
-                    <img width="120" height="120" class="pull-left" alt="sample-image" src="images/sample-image.jpg">
-                </a>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.Cras id
-                urna.
-                Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus
-                leo.
-                Donec mattis, purus nec placerat bibendum, dui pede condimentum odio.
-            </p> --}}
-
-
         </div>
 
     </div> <!-- end row -->

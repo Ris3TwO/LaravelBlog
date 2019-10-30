@@ -3294,6 +3294,10 @@ footer ul li {
     margin: auto;
 }
 
+.text-capitalize {
+    text-transform: capitalize;
+}
+
 
 /* ===================================================================
  *  15. page styles
