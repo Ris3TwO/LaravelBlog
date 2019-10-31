@@ -5,7 +5,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>@yield('meta-title', config('app.name') . " | Blog")</title>
+    <title>@yield('meta-title', setting('app_name') . " | Blog")</title>
     <meta name="description" content="@yield('meta-description', 'Este es el blog de Yaremí Mendoza')">
     <meta name="author" content="">
 
@@ -29,8 +29,8 @@
 
     <!-- favicons
 	================================================== -->
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ \Storage::disk('public')->url(AppSettings::get('favicon')) }}" type="image/x-icon">
+    <link rel="icon" href="{{ \Storage::disk('public')->url(AppSettings::get('favicon')) }}" type="image/x-icon">
 
 </head>
 
@@ -41,7 +41,9 @@
         <div class="gradient-block"></div>
         <div class="row header-content">
             <div class="logo">
-                <a href="{{ route('pages.home') }}">{{ config('app.name', 'Laravel') }}</a>
+                <a href="{{ route('pages.home') }}">
+                    <img src="{{ \Storage::disk('public')->url(AppSettings::get('logo')) }}" alt="{{ setting('app_name') }}" width="60" height="60">
+                </a>
             </div>
 
             @include('partials.nav')
@@ -89,14 +91,14 @@
 
                 <div class="col-two tab-1-3 mob-1-2 site-links">
 
-                    <h4>Site Links</h4>
+                    <h4>Enlaces del Sitio</h4>
 
                     <ul>
                         <li><a href="#">About Us</a></li>
-                        <li><a href="{{ route('admin') }}">Administración</a></li>
+                        <li><a href="{{ route('admin') }}">{{ Auth::guest() ? "Ingresar" : "Administración" }}</a></li>
                         <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
                     </ul>
 
                 </div> <!-- end site-links -->
@@ -150,7 +152,7 @@
                         <span>
                             <script>
                                 var f = new Date(); document.write(f.getFullYear());
-                            </script> © Copyright {{ config('app.name') }} - Todos los derechos reservados
+                            </script> © Copyright {{ setting('app_name') }} - Todos los derechos reservados
                         </span>
                         <span>Diseño por <a href="http://www.styleshout.com/" target="_blank">Styleshout</a></span>
                         <span>Modificado y Programado por <a href="https://www.twitter.com/xfreeshot"

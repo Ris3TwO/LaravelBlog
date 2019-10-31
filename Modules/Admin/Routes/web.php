@@ -16,6 +16,10 @@ Route::group(['domain' => 'cp.'. Config::get('app.url')], function () {
     Route::get('/', function () {
         return redirect(Config::get('app.url'));
     });
+
+    Route::get('settings', function () {
+        return redirect('admin/settings');
+    });
 });
 
 Route::group([
@@ -43,5 +47,10 @@ Route::group([
 
         Route::post('posts/{post}/photos', 'PhotosController@store')->name('admin.posts.photos.store');
         Route::delete('photos/{photo}', 'PhotosController@destroy')->name('admin.photos.destroy');
+
+        Route::get('settings', '\QCod\AppSettings\Controllers\AppSettingController@index')->name('settings.index');
+        Route::post('settings', '\QCod\AppSettings\Controllers\AppSettingController@store')->name('settings.store');
+
+
     }
 );

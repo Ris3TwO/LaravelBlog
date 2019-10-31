@@ -19,6 +19,10 @@ Route::group(['domain' => 'sign.' . Config::get('app.url')], function () {
     Auth::routes(['register' => false]);
 });
 
+// Route::group(['domain' => 'cp.' . Config::get('app.url')], function () {
+
+// });
+
 Route::group(['domain' => Config::get('app.url')], function () {
 
     Route::get('/', 'PagesController@home')->name('pages.home');
@@ -36,6 +40,10 @@ Route::group(['domain' => Config::get('app.url')], function () {
 
     Route::get('posts', function () {
         return App\Post::all();
+    });
+
+    Route::get('settings', function () {
+        return redirect()->route('settings.index');
     });
 });
 

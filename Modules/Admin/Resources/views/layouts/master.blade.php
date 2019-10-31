@@ -2,12 +2,17 @@
 <html lang="en">
 
 <head>
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ AppSettings::get('app_name', 'Laravel') }} | Administración</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <!-- favicons
+        ================================================== -->
+        <link rel="shortcut icon" href="{{ \Storage::disk('public')->url(AppSettings::get('favicon')) }}" type="image/x-icon">
+        <link rel="icon" href="{{ \Storage::disk('public')->url(AppSettings::get('favicon')) }}" type="image/x-icon">
 
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
@@ -17,6 +22,7 @@
     <!-- Material Dashboard CSS -->
     <link href="{{ Module::asset('admin:css/material-dashboard-personal.css') }}" rel="stylesheet">
     <link href="{{ Module::asset('admin:css/material-dashboard.css') }}" rel="stylesheet">
+
     @stack('styles')
 
 </head>
@@ -27,7 +33,7 @@
             data-image="{{ Module::asset('admin:img/sidebar-1.jpg') }}">
             <div class="logo">
                 <a href="{{ route('pages.home') }}" class="simple-text logo-normal">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ AppSettings::get('app_name', 'Laravel') }}
                 </a>
             </div>
             <div class="sidebar-wrapper">
@@ -62,7 +68,7 @@
                                     <div class="dropdown-item">{{ auth()->user()->name }} {{ auth()->user()->lastname }} - {{ auth()->user()->getRoleDisplayNames() }}</div>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('admin.users.show', auth()->user()) }}">Perfil</a>
-                                    <a class="dropdown-item" href="#">Configuraciones</a>
+                                    <a class="dropdown-item" href="{{ route('settings.index') }}">Configuraciones</a>
                                     <div class="dropdown-divider"></div>
                                     <form action="{{ route('logout') }}" method="POST">
                                         {{ csrf_field() }}
