@@ -142,6 +142,7 @@
         <script src="{{ Module::asset('admin:js/material-dashboard.js?v=2.1.0') }}"></script>
         <!--  Notifications Plugin    -->
         <script src="{{ Module::asset('admin:js/plugins/bootstrap-notify.js') }}"></script>
+        <script src="{{ asset('/vendors/ckeditor/ckeditor.js') }}"></script>
         <script type="text/javascript">
             $(document).ready(function () {
             @if (session()->has('flash'))

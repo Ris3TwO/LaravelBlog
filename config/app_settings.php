@@ -46,6 +46,78 @@ return [
                 ]
             ]
         ],
+        'maintenance' => [
+            'title' => 'Modo Mantenimiento',
+            'descriptions' => 'El modo mantenimiento se usa para suspender el acceso a ingresar al sitio',
+            'icon' => 'fa fa-cog',
+
+            'inputs' => [
+                [
+                    'type' => 'checkbox',
+                    'label' => 'Activar el modo mantenimiento',
+                    'name' => 'maintenance_check',
+                    'value' => '0'
+                ],
+                [
+                    'type' => 'textarea',
+                    'name' => 'maintenance_note',
+                    'label' => 'Nota sobre el mantenimiento',
+                    'class' => 'ckeditor',
+                    'rows' => 4,
+                    'cols' => 10
+                ]
+            ]
+
+        ],
+        'about' => [
+            'title' => 'Información sobre el sitio',
+            'descriptions' => 'Esta información será mostrada en diferentes partes del sitio',
+            'icon' => 'fa fa-cog',
+
+            'inputs' => [
+                [
+                    'type' => 'textarea',
+                    'name' => 'about_short',
+                    'label' => 'Breve descripción del sitio',
+                    'rules' => 'max:240',
+                    'rows' => 4,
+                    'cols' => 10,
+                    'hint' => 'La información aquí suministrada será mostrada en el footer'
+                ],
+                [
+                    'name' => 'about_title',
+                    'type' => 'text',
+                    'label' => 'Título sobre Nosotros',
+                    // optional fields
+                    'data_type' => 'string',
+                    'rules' => 'required|min:4|max:100',
+                    'placeholder' => 'Título',
+                    'class' => 'form-control',
+                    'value' => 'Este título es un ejemplo',
+                    'hint' => 'El título suministrado aquí será mostrado en la sección "Nosotros"'
+                ],
+                [
+                    'name' => 'about_img',
+                    'type' => 'image',
+                    'label' => 'Imagen sobre Nosotros',
+                    'hint' => 'Debe ser una imagen y recortada en el tamaño deseado',
+                    'rules' => 'image|max:1000',
+                    'disk' => 'public', // which disk you want to upload
+                    'path' => 'app', // path on the disk,
+                    'preview_class' => 'thumbnail',
+                    'preview_style' => 'height:60px'
+                ],
+                [
+                    'type' => 'textarea',
+                    'name' => 'about_us',
+                    'label' => 'Descripción completa del sitio',
+                    'class' => 'ckeditor',
+                    'rows' => 8,
+                    'cols' => 10,
+                    'hint' => 'La información suministrada será mostrada en la sección "Nosotros"'
+                ],
+            ]
+        ]
         // 'email' => [
         //     'title' => 'Email Settings',
         //     'descriptions' => 'How app email will be sent.',
@@ -94,7 +166,7 @@ return [
 
     // Submit button
     'submit_btn_text' => 'Guardar configuración',
-    'submit_success_message' => 'Settings has been saved.',
+    'submit_success_message' => 'La configuración ha sido guardada.',
 
     // Remove any setting which declaration removed later from sections
     'remove_abandoned_settings' => false,
@@ -104,7 +176,7 @@ return [
     // 'controller' => '\Modules\Admin\Http\Controllers\SettingsController',
 
     // settings group
-    'setting_group' => function() {
+    'setting_group' => function () {
         // return 'user_'.auth()->id();
         return 'default';
     }

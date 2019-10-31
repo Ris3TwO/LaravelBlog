@@ -79,12 +79,10 @@
 
                 <div class="col-four tab-full mob-full footer-info">
 
-                    <h4>About Our Site</h4>
+                    <h4>Sobre Nuestro Sitio</h4>
 
-                    <p>
-                        Lorem ipsum Ut velit dolor Ut labore id fugiat in ut fugiat nostrud qui in dolore commodo eu
-                        magna Duis cillum dolor officia esse mollit proident Excepteur exercitation nulla. Lorem ipsum
-                        In reprehenderit commodo aliqua irure labore.
+                    <p class="text-justify">
+                        {{ AppSettings::get('about_short') }}
                     </p>
 
                 </div> <!-- end footer-info -->
@@ -94,18 +92,18 @@
                     <h4>Enlaces del Sitio</h4>
 
                     <ul>
-                        <li><a href="#">About Us</a></li>
                         <li><a href="{{ route('admin') }}">{{ Auth::guest() ? "Ingresar" : "Administración" }}</a></li>
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">Términos y Condiciones</a></li>
                         <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Política de Cookies</a></li>
                     </ul>
 
                 </div> <!-- end site-links -->
 
                 <div class="col-two tab-1-3 mob-1-2 social-links">
 
-                    <h4>Social</h4>
+                    <h4>Redes Sociales</h4>
 
                     <ul>
                         <li><a href="#">Twitter</a></li>

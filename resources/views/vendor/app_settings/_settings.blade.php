@@ -1,8 +1,8 @@
     <div class="container-fluid">
         <div class="row justify-content-md-center">
-            <div class="col-md-7 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-2">
 
-                {{--  @includeIf(config('app_settings.flash_partial'))  --}}
+                @includeIf(config('app_settings.flash_partial'))
 
                 <form method="post" action="{{ route('settings.store') }}" class="form-horizontal mb-3"
                     enctype="multipart/form-data" role="form">

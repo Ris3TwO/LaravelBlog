@@ -3298,6 +3298,10 @@ footer ul li {
     text-transform: capitalize;
 }
 
+.text-justify {
+    text-align: justify;
+}
+
 
 /* ===================================================================
  *  15. page styles

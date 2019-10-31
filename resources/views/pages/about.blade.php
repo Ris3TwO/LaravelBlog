@@ -5,17 +5,19 @@
    	<div class="row">
    		<div class="col-twelve">
 
-   			<section>  
+   			<section>
 
-   				<div class="content-media">						
-						<img src="images/thumbs/about-us.jpg">						  
+   				<div class="content-media">
+						<img src="{{ \Storage::disk('public')->url(AppSettings::get('about_img')) }}">
 					</div>
 
-					<div class="primary-content">
+					<div class="primary-content text-justify">
 
-						<h1 class="entry-title add-bottom">Learn More About Us.</h1>	
+						<h1 class="entry-title add-bottom">{{ AppSettings::get('about_title') }}</h1>
 
-						<p class="lead">Lorem ipsum Nisi cillum reprehenderit minim sunt dolore dolor eiusmod eu aliquip ad ut sint dolore laborum voluptate ullamco dolore aliquip enim. Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing</p> 
+                        {!! setting('about_us') !!}
+
+						{{--  <p class="lead">Lorem ipsum Nisi cillum reprehenderit minim sunt dolore dolor eiusmod eu aliquip ad ut sint dolore laborum voluptate ullamco dolore aliquip enim. Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing</p>
 
 						<p>Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint ut quis proident ullamco ut dolore culpa occaecat ut laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.</p>
 
@@ -42,14 +44,14 @@
 								<p>Lorem ipsum Nisi amet fugiat eiusmod et aliqua ad qui ut nisi Ut aute anim mollit fugiat qui sit ex occaecat et eu mollit nisi pariatur fugiat deserunt dolor veniam reprehenderit aliquip magna nisi consequat aliqua veniam in aute ullamco Duis laborum ad non pariatur sit.</p>
 							</div>
 
-						</div>
+						</div>  --}}
 
-					</div>						
+					</div>
 
-				</section>  		
+				</section>
 
 			</div> <!-- end col-twelve -->
    	</div> <!-- end row -->
-		
+
 </section> <!-- end content -->
 @endsection
