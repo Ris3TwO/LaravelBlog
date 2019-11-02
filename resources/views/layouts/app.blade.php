@@ -48,6 +48,7 @@
 
             @include('partials.nav')
 
+            <!-- search wrap -->
             <div class="search-wrap">
                 <form role="search" method="get" class="search-form" action="#">
                     <label>
@@ -58,7 +59,8 @@
                     <input type="submit" class="search-submit" value="Buscar">
                 </form>
                 <a href="#" id="close-search" class="close-btn">Cerrar</a>
-            </div> <!-- end search wrap -->
+            </div> 
+            <!-- end search wrap -->
 
             <div class="triggers">
                 <a class="search-trigger" href="#"><i class="fa fa-search"></i></a>

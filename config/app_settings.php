@@ -47,7 +47,7 @@ return [
             ]
         ],
         'maintenance' => [
-            'title' => 'Modo Mantenimiento',
+            'title' => 'Modo Mantenimiento [No habilitado]',
             'descriptions' => 'El modo mantenimiento se usa para suspender el acceso a ingresar al sitio',
             'icon' => 'fa fa-cog',
 

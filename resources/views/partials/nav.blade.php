@@ -34,7 +34,7 @@
         </li>
         <li class="{{ setActiveRouteHome('pages.contact') }}">
             <a href="{{ route('pages.contact') }}">
-                Contáctame
+                Contacto
             </a>
         </li>
     </ul>
