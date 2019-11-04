@@ -3,13 +3,15 @@
 namespace App;
 
 use Carbon\Carbon;
-use App\Traits\DatesTranslator;
 use Modules\Admin\Entities\Photo;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+use CyrildeWit\EloquentViewable\Viewable;
+use CyrildeWit\EloquentViewable\Contracts\Viewable as ViewableContract;
+
+class Post extends Model implements ViewableContract
 {
-    use DatesTranslator;
+    use Viewable;
 
     protected $dates = ['published_at'];
     protected $fillable = [
@@ -83,8 +85,9 @@ class Post extends Model
         return $query->selectRaw('year(published_at) year')
             ->selectRaw('month(published_at) month')
             ->selectRaw('monthname(published_at) monthname')
+            ->selectRaw('day(published_at) day')
             ->selectRaw('count(*) posts')
-            ->groupBy('year', 'month', 'monthname')
+            ->groupBy('year', 'month', 'monthname', 'day')
             ->orderBy('published_at');
     }
 

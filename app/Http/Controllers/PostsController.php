@@ -17,7 +17,8 @@ class PostsController extends Controller
     {
         if($post->isPublished() || auth()->check())
         {
-            // $post = Post::published()->simplePaginate();
+            views($post)->record();
+
             return view('posts.show', compact('post'));
         }
         abort(404);

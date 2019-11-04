@@ -9,11 +9,17 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
+    // public function spa(){
+    //     return view('pages.spa');
+    // }
+
     public function home()
     {
+        // $sliders = Post::take(3)->published()->byYearAndMonth()->orderByViews()->get();
         $posts = Post::published()->paginate();
+        $sliders = $posts->take(3);
 
-        return view('pages.home', compact('posts'));
+        return view('pages.home', compact('posts', 'sliders'));
     }
 
     public function blog()

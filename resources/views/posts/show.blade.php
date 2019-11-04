@@ -7,9 +7,11 @@
 <section id="content-wrap" class="blog-single">
     <div class="row">
         <div class="col-twelve">
-            <article class="{{ $post->photos->count() == 0 ? 'format-video' : ($post->photos->count() < 1 ? 'format-standard' : 'format-gallery') }}">
+            <article
+                class="{{ $post->photos->count() == 0 ? 'format-video' : ($post->photos->count() < 1 ? 'format-standard' : 'format-gallery') }}">
                 <div class="content-media">
-                    <div class="{{ $post->photos->count() == 0 ? 'fluid-video-wrapper' : ($post->photos->count() < 1 ? 'post-thumb' : 'post-slider flexslider') }}">
+                    <div
+                        class="{{ $post->photos->count() == 0 ? 'fluid-video-wrapper' : ($post->photos->count() < 1 ? 'post-thumb' : 'post-slider flexslider') }}">
                         @include($post->viewType())
                     </div>
                 </div>
@@ -21,15 +23,30 @@
                         @include('posts.header')
                     </ul>
 
+                    <ul class="stats-tabs">
+                        <li>
+                            <a href="#">
+                                {{ $post->views->count() }}
+                                <em>Leído</em>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                {{ $post->comments->count() }}
+                                <em>{{ $post->comments->count() == 1 ? 'Comentario' : 'Comentarios' }}</em>
+                            </a>
+                        </li>
+                    </ul>
+
                     <p class="lead">{!! $post->body !!}</p>
 
                     @if ($post->tags)
-                        <p class="tags">
-                            <span>Etiquetado en:</span>
-                            @foreach ($post->tags as $tag)
-                                <a href="{{ route('tags.show', $tag) }}">#{{ $tag->name }}</a>
-                            @endforeach
-                        </p>
+                    <p class="tags">
+                        <span>Etiquetado en:</span>
+                        @foreach ($post->tags as $tag)
+                        <a href="{{ route('tags.show', $tag) }}">#{{ $tag->name }}</a>
+                        @endforeach
+                    </p>
                     @endif
 
                     @include('partials.social-links', ['description' => $post->title, 'excerpt' => $post->excerpt])
@@ -70,7 +87,7 @@
                             Less Is More
                         </a>
                     </div>
-                </div>  --}}
+                </div> --}}
 
             </article>
 
@@ -89,9 +106,10 @@
         <div id="comments" class="row">
             <div class="col-full">
                 @if ($post->comments)
-                    <h3>{{ $post->comments->count() }} {{ $post->comments->count() == 1 ? 'Comentario' : 'Comentarios' }}</h3>
+                <h3>{{ $post->comments->count() }} {{ $post->comments->count() == 1 ? 'Comentario' : 'Comentarios' }}
+                </h3>
 
-                    @include('comments.list', ['comments' => $post->comments])
+                @include('comments.list', ['comments' => $post->comments])
                 @endif
 
                 @include('comments.form')
@@ -102,7 +120,7 @@
 @stop
 
 @push('styles')
-    <link href="{{ asset('css/social-media.css') }}" rel="stylesheet">
+<link href="{{ asset('css/social-media.css') }}" rel="stylesheet">
 @endpush
 
 {{-- @push('scripts')

@@ -8,6 +8,7 @@
     <title>@yield('meta-title', setting('app_name') . " | Blog")</title>
     <meta name="description" content="@yield('meta-description', 'Este es el blog de Yaremí Mendoza')">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- mobile specific metas
     ================================================== -->
@@ -29,12 +30,16 @@
 
     <!-- favicons
 	================================================== -->
-    <link rel="shortcut icon" href="{{ \Storage::disk('public')->url(AppSettings::get('favicon')) }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ \Storage::disk('public')->url(AppSettings::get('favicon')) }}"
+        type="image/x-icon">
     <link rel="icon" href="{{ \Storage::disk('public')->url(AppSettings::get('favicon')) }}" type="image/x-icon">
 
 </head>
 
 <body id="top">
+    {{--  <div id="app">  --}}
+
+
     <!-- header
     ================================================== -->
     <header class="short-header">
@@ -42,7 +47,8 @@
         <div class="row header-content">
             <div class="logo">
                 <a href="{{ route('pages.home') }}">
-                    <img src="{{ \Storage::disk('public')->url(AppSettings::get('logo')) }}" alt="{{ setting('app_name') }}" width="60" height="60">
+                    <img src="{{ \Storage::disk('public')->url(AppSettings::get('logo')) }}"
+                        alt="{{ setting('app_name') }}" width="60" height="60">
                 </a>
             </div>
 
@@ -59,7 +65,7 @@
                     <input type="submit" class="search-submit" value="Buscar">
                 </form>
                 <a href="#" id="close-search" class="close-btn">Cerrar</a>
-            </div> 
+            </div>
             <!-- end search wrap -->
 
             <div class="triggers">
@@ -94,11 +100,26 @@
                     <h4>Enlaces del Sitio</h4>
 
                     <ul>
-                        <li><a href="{{ route('admin') }}">{{ Auth::guest() ? "Ingresar" : "Administración" }}</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Términos y Condiciones</a></li>
-                        <li><a href="#">Política de Privacidad</a></li>
-                        <li><a href="#">Política de Cookies</a></li>
+                        <li>
+                            <a href="{{ route('admin') }}">
+                                {{ Auth::guest() ? "Ingresar" : "Administración" }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Términos y Condiciones
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Política de Privacidad
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Política de Cookies
+                            </a>
+                        </li>
                     </ul>
 
                 </div> <!-- end site-links -->
@@ -119,9 +140,9 @@
 
                 <div class="col-four tab-1-3 mob-full footer-subscribe">
 
-                    <h4>Subscribe</h4>
+                    <h4>Suscríbete</h4>
 
-                    <p>Keep yourself updated. Subscribe to our newsletter.</p>
+                    <p>Manténgase informado. Suscríbase a nuestro boletín de noticias.</p>
 
                     <div class="subscribe-form">
 
@@ -172,12 +193,15 @@
     <div id="preloader">
         <div id="loader"></div>
     </div>
+    {{--  </div>  --}}
 
     <!-- Java Script
         ================================================== -->
     <script src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
+
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 
 </html>
